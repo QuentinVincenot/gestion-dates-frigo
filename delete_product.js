@@ -25,9 +25,9 @@ function initialize_deletion_form(event) {
     let product_to_delete_type = event.target.parentNode.parentNode.children[0].innerText;
     console.log('Type', product_to_delete_type);
 
-    document.getElementById('aliment_to_delete').innerHTML = product_info[0];
-    document.getElementById('type_aliment_to_delete').innerHTML = product_to_delete_type;
-    document.getElementById('date_aliment_to_delete').innerHTML = product_info[1];
+    document.getElementById('aliment_to_delete').value = product_info[0];
+    document.getElementById('type_aliment_to_delete').value = product_to_delete_type;
+    document.getElementById('date_aliment_to_delete').value = product_info[1];
 }
 
 
