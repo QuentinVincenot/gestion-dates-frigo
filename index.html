@@ -52,10 +52,11 @@
         </div>
     </div>
 
+
     <!-- Add product modal dialog -->
     <div id="add_product_modal" class="modal">
         <div class="modal-content">
-            <span id="close_add_product_modal">&times;</span>
+            <span id="close_add_product_modal" class="close">&times;</span>
             <h2>Ajouter un produit</h2>
             <form id="add_product_form">
                 <div class="form-group">
@@ -81,18 +82,28 @@
     </div>
 
 
-
-
-    <!-- The Modal for Product Deletion -->
-    <div id="productDeletionModal" class="modal">
+    <!-- Product deletion modal dialog -->
+    <div id="delete_product_modal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Supprimer le produit</h2>
-            <div id="modalContent"></div>
-            <button class="delete-button-modal">Supprimer</button>
+            <span id="close_delete_product_modal" class="close">&times;</span>
+            <h2>Supprimer le produit ?</h2>
+            <form id="delete_product_form">
+                <div class="form-group">
+                    <label for="aliment_to_delete">Aliment</label>
+                    <input type="text" id="aliment_to_delete" name="aliment_to_delete" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="type_aliment_to_delete">Type</label>
+                    <input type="text" id="type_aliment_to_delete" name="type_aliment_to_delete" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="date_aliment_to_delete">Date</label>
+                    <input type="date" id="date_aliment_to_delete" name="date_aliment_to_delete" disabled>
+                </div>
+                <button type="submit" class="submit-button" id="submit_delete_button" disabled>Supprimer</button>
+            </form>
         </div>
     </div>
-
 
 
     <script src="utils.js" type="module"></script>
@@ -102,6 +113,7 @@
     
     <script src="products.js" type="module"></script>
     <script src="add_product.js" type="module"></script>
+    <script src="delete_product.js" type="module"></script>
 
     <script src="script.js" type="module"></script>
 </body>

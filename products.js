@@ -10,7 +10,7 @@ export { load_products_from_cookies, delete_all_products };
 function load_products_from_cookies() {
     // Retrieve products information from the registered cookies
     let products = get_cookie("products");
-    if (products) {
+    if(products) {
         // Parse the retrieved JSON information about the registered products
         products = JSON.parse(products);
 

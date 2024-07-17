@@ -49,6 +49,7 @@ function display_products_in_boxes(products) {
         
         // Create a new element for the current product and prefix it with the corresponding icon
         var product_element = document.createElement("li");
+        product_element.classList.add('box-product-line');
         product_element.innerHTML = ` ${product.aliment} - ${product.date}`;
         product_element.insertBefore(icon, product_element.firstChild);
 
