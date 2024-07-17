@@ -24,13 +24,13 @@ function set_cookie(name, value, days) {
 
     // Create a cookie to persist data and set its new expiration date
     let expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/;SameSite=None";
+    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/;SameSite=Strict";
 }
 
 // Function to reset and empty every cookie information stored
 function reset_all_cookies() {
     // Empty all cookies information
-    document.cookie = "products=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "products=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;SameSite=Strict";
 }
 
 
