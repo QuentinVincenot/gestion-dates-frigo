@@ -1,3 +1,4 @@
+import { create_icon_based_on_dates } from './utils.js';
 import { getCookie, setCookie } from './cookies.js';
 
 
@@ -54,31 +55,12 @@ document.getElementById("date").addEventListener("input", checkFormValidity);
 
 
 
-/*// Function to get cookies
-function getCookie(name) {
-    let cookieArr = document.cookie.split(";");
-    for(let i = 0; i < cookieArr.length; i++) {
-        let cookiePair = cookieArr[i].split("=");
-        if(name == cookiePair[0].trim()) {
-            return decodeURIComponent(cookiePair[1]);
-        }
-    }
-    return null;
-}
-
-// Function to set cookies
-function setCookie(name, value, days) {
-    let date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
-}*/
-
-
-
 // Function to add product box to the DOM
 function addProductBox(product) {
-    // Création de l'icône Font Awesome en fonction de la date
+
+    let icon = create_icon_based_on_dates(product);
+
+    /*// Création de l'icône Font Awesome en fonction de la date
     const icon = document.createElement('i');
     icon.classList.add('fas');
 
@@ -99,7 +81,7 @@ function addProductBox(product) {
         // Date plus loin dans le futur
         icon.classList.add('fa-check-circle');
         icon.style.color = 'green';
-    }
+    }*/
 
     // Ajouter la boîte au bon conteneur en fonction du type de produit
     let product_type_box;
@@ -217,7 +199,7 @@ form.onsubmit = function(event) {
     products.push(product);
 
     // Save updated products to cookies
-    setCookie("products", JSON.stringify(products), 7);
+    setCookie("products", JSON.stringify(products), 30);
 
     // Add product to the DOM
     addProductBox(product);

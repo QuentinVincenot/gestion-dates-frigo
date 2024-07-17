@@ -1,6 +1,8 @@
+// Export the cookies management function to persist data
 export { getCookie, setCookie };
 
-// Function to get cookies
+
+// Function to retrieve data from the existing cookie
 function getCookie(name) {
     let cookieArr = document.cookie.split(";");
     for(let i = 0; i < cookieArr.length; i++) {
@@ -12,7 +14,7 @@ function getCookie(name) {
     return null;
 }
 
-// Function to set cookies
+// Function to persist data into a cookie
 function setCookie(name, value, days) {
     let date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
