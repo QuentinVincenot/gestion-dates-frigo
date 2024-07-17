@@ -1,3 +1,7 @@
+import { get_cookie, set_cookie } from "./cookies.js";
+import { update_sidebar } from './sidebar.js';
+
+export { checkFormValidity };
 
 
 // Retrieve the modal dialog that is hidden by default
@@ -64,3 +68,20 @@ add_product_form.onsubmit = function(event) {
     // Close the modal dialog at the end of the product addition submission
     add_product_modal.style.display = "none";
 }
+
+// Function to check if form is valid
+function checkFormValidity() {
+    var aliment = document.getElementById("aliment").value;
+    var date = document.getElementById("date").value;
+    if (aliment && date) {
+        submitButton.disabled = false;
+    } else {
+        submitButton.disabled = true;
+    }
+}
+
+// Attach event listeners to form inputs
+document.getElementById("aliment").addEventListener("input", checkFormValidity);
+document.getElementById("date").addEventListener("input", checkFormValidity);
+
+

@@ -1,6 +1,8 @@
 import { create_icon_based_on_dates } from './utils.js';
 import { get_cookie } from './cookies.js';
+import { display_products_in_sidebar } from './sidebar.js';
 import { delete_all_products } from './products.js';
+//import { checkFormValidity } from './add_product.js';
 
 
 // Load products on page load
@@ -59,7 +61,7 @@ var boissonBox = document.getElementById("boisson");
     }
 }*/
 
-// Function to check if form is valid
+/*// Function to check if form is valid
 function checkFormValidity() {
     var aliment = document.getElementById("aliment").value;
     var date = document.getElementById("date").value;
@@ -72,7 +74,7 @@ function checkFormValidity() {
 
 // Attach event listeners to form inputs
 document.getElementById("aliment").addEventListener("input", checkFormValidity);
-document.getElementById("date").addEventListener("input", checkFormValidity);
+document.getElementById("date").addEventListener("input", checkFormValidity);*/
 
 
 

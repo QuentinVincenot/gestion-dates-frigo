@@ -1,5 +1,5 @@
-import { /*update_sidebar,*/ display_products_in_sidebar, empty_sidebar } from "./sidebar.js";
 import { get_cookie, reset_all_cookies } from "./cookies.js";
+import { /*update_sidebar,*/ display_products_in_sidebar, empty_sidebar } from "./sidebar.js";
 
 // Export the delete all products method to delete all registered products at once
 export { load_products_from_cookies, delete_all_products };
