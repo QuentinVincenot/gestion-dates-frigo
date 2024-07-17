@@ -1,7 +1,7 @@
 import { create_icon_based_on_dates } from './utils.js';
 import { get_cookie, set_cookie, reset_all_cookies } from './cookies.js';
 import { update_sidebar, empty_sidebar } from './sidebar.js';
-import { deleteAllProducts } from './products.js';
+import { delete_all_products } from './products.js';
 
 
 // Load products on page load
@@ -174,7 +174,7 @@ const delete_all_products_button = document.getElementById('delete_all_products_
 // Add an event listener on the delete all products button to call the delete all products function
 delete_all_products_button.addEventListener('click', function() {
     // Delete all registered products at the same time
-    deleteAllProducts();
+    delete_all_products();
 });
 
 
