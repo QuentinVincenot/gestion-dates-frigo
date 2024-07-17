@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+.container {
+    display: flex;
+    height: calc(100vh - 50px); /* Ajuster en fonction de la hauteur de l'en-tête */
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar {
+    width: 400px; /* Augmentation de la largeur de la sidebar à 600 pixels */
+    background-color: #f4f4f4;
+    padding: 1em;
+    box-sizing: border-box;
+    text-align: right;
+}
+.sidebar h2 {
+    text-align: center;
+}
+.sidebar li {
+    text-align: left;
+}
+#alimentsList {
+    font-size: 14px;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1em;
+    box-sizing: border-box;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+.add-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+.add-button i {
+    margin-right: 0.5em;
+}
+.delete-button {
+    background-color: #f44336; /* Couleur rouge */
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-left: 1em; /* Marge à gauche pour séparer du bouton Ajouter */
+}
+.delete-button i {
+    margin-right: 0.5em;
+}
+.boxes {
+    display: flex;
+    justify-content: space-between; /* Espacement égal entre les boîtes */
+    flex-wrap: wrap;
+    gap: 1em; /* Espacement entre les boîtes */
+}
+.box {
+    width: calc(25% - 1em); /* Largeur calculée pour chaque boîte avec espacement */
+    height: 300px;
+    background-color: #ddd;
+    box-sizing: border-box;
+    margin-bottom: 1em; /* Espacement en bas de chaque boîte */
+    padding: 0 1em; /* Ajouter un padding pour espacer le contenu */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligner le contenu en haut */
+}
+.box-title {
+    font-weight: bold;
+    text-align: center; /* Centrer le titre */
+}
+.box-content {
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Aligner le texte à gauche à l'intérieur de la boîte */
+    font-size: 14px;
+}
+.box-content li {
+    margin-bottom: 0.5em; /* Espacement entre les éléments de liste */
+}
+.box-content li:hover, .box-content li:hover i {
+    cursor: pointer; /* Changement du curseur */
+    text-decoration: line-through; /* Texte barré au survol */
+    color: black; /* Couleur du texte barré */
+}
+/* Style pour le modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.form-group {
+    margin-bottom: 1em;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
