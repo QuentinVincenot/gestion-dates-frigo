@@ -167,3 +167,6 @@ ul {
     background-color: #ccc;
     cursor: not-allowed;
 }
+.button-center {
+    text-align: center;
+}
