@@ -1,3 +1,4 @@
+import { create_icon_based_on_dates } from "./utils.js";
 import { get_cookie } from "./cookies.js";
 
 // Export the cookies management function to persist data
