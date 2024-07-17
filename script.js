@@ -1,6 +1,5 @@
 import { create_icon_based_on_dates } from './utils.js';
-import { get_cookie, set_cookie, reset_all_cookies } from './cookies.js';
-import { update_sidebar, empty_sidebar } from './sidebar.js';
+import { get_cookie } from './cookies.js';
 import { delete_all_products } from './products.js';
 
 
