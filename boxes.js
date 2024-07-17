@@ -72,8 +72,8 @@ function display_products_in_boxes(products) {
         var delete_product_modal = document.getElementById("delete_product_modal");
         product_element.addEventListener('click', function(event) {
             console.log(event);
-            delete_product_modal.style.display = "block";
             initialize_deletion_form(event);
+            delete_product_modal.style.display = "block";
         });
     });
 
