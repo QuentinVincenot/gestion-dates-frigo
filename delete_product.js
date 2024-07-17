@@ -19,9 +19,9 @@ function initialize_deletion_form(event) {
     console.log('Parent 2 ID', event.target.parentNode.parentNode.id);
 
     let box_product_line_html = event.target.innerHTML;
-    console.log('Content', box_product_line_html.split('<li> ')[1]);
+    console.log('Content', box_product_line_html.split('</i> ')[1]);
 
-    let product_to_delete_type = event.target.parentNode.parentNode.children[0].value;
+    let product_to_delete_type = event.target.parentNode.parentNode.children;
     console.log('Type', product_to_delete_type);
 }
 
