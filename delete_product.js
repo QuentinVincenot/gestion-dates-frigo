@@ -6,7 +6,7 @@ var delete_product_modal = document.getElementById("delete_product_modal");
 
 // Add an event listener to close the modal dialog when the user clicks anywhere on the outside
 window.onclick = function(event) {
-    if(event.target == delete_product_modal) {
+    if(event.target != delete_product_modal.children[0]) {
         delete_product_modal.style.display = "none";
     }
 }
