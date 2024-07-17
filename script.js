@@ -84,7 +84,6 @@ function addProductBox(product) {
     var box = document.createElement("li");
     box.innerHTML = ` ${product.aliment} - ${product.date}`;
     box.insertBefore(icon, box.firstChild);
-    console.log(box.innerHTML);
 
     // Trouver la position correcte pour insérer le nouvel aliment trié
     let inserted = false;
