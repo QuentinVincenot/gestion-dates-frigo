@@ -1,6 +1,6 @@
 import { create_icon_based_on_dates } from './utils.js';
 import { get_cookie, set_cookie, reset_all_cookies } from './cookies.js';
-import { update_sidebar } from './sidebar.js';
+import { update_sidebar, empty_sidebar } from './sidebar.js';
 
 
 // Get the modal
@@ -153,9 +153,8 @@ function deleteAllProducts() {
         content.innerHTML = '';
     });
 
-    // Vider la barre latérale
-    const alimentsList = document.getElementById('alimentsList');
-    alimentsList.innerHTML = '';
+    // Empty the sidebar containing the list of products
+    empty_sidebar();
 
     // Empty all cookies information
     reset_all_cookies();
@@ -183,6 +182,7 @@ function loadProducts() {
         // Ajouter chaque produit à la sidebar et aux boîtes correspondantes
         products.forEach(product => {
             addProductBox(product);
+            update_sidebar(product);
         });
     }
 }
