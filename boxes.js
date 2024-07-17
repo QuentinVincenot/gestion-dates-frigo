@@ -66,6 +66,13 @@ function display_products_in_boxes(products) {
             }
         }
         if (!inserted) { product_type_box.appendChild(product_element); }
+
+        // Retrieve the modal dialog that is hidden by default
+        var delete_product_modal = document.getElementById("delete_product_modal");
+        product_element.addEventListener('click', function(event) {
+            console.log(event);
+            delete_product_modal.style.display = "block";
+        });
     });
 
     /*// Sort products by their date (oldest dates in first)
