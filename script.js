@@ -1,19 +1,40 @@
 import { create_icon_based_on_dates } from './utils.js';
 import { get_cookie, set_cookie, reset_all_cookies } from './cookies.js';
 import { update_sidebar, empty_sidebar } from './sidebar.js';
+import { deleteAllProducts } from './products.js';
+
+
+// Load products on page load
+window.onload = function() {
+    loadProducts();
+}
+
+// Load saved products from cookies
+function loadProducts() {
+    let products = get_cookie("products");
+    if (products) {
+        products = JSON.parse(products);
+        // Ajouter chaque produit à la sidebar et aux boîtes correspondantes
+        display_products_in_sidebar(products);
+        /*products.forEach(product => {
+            addProductBox(product);
+            update_sidebar(product);
+        });*/
+    }
+}
 
 
 // Get the modal
-var modal = document.getElementById("myModal");
+//var add_product_modal = document.getElementById("add_product_modal");
 
 // Get the button that opens the modal
-var addButton = document.getElementById("addButton");
+//var addButton = document.getElementById("addButton");
 
 // Sélectionner le bouton de fermeture du modal
-const closeButton = document.querySelector('.close');
+//const closeButton = document.querySelector('.close');
 
 // Get the form and submit button
-var form = document.getElementById("productForm");
+//var add_product_form = document.getElementById("add_product_form");
 var submitButton = document.getElementById("submitButton");
 
 // Get the boxes container
@@ -23,21 +44,21 @@ var poissonBox = document.getElementById("poisson");
 var boissonBox = document.getElementById("boisson");
 
 // Gérer le clic sur le bouton Ajouter pour ouvrir le modal
-addButton.addEventListener('click', function() {
-    modal.style.display = "block"; // Afficher le modal lors du clic sur Ajouter
-});
+/*addButton.addEventListener('click', function() {
+    add_product_modal.style.display = "block"; // Afficher le modal lors du clic sur Ajouter
+});*/
 
 // Gérer le clic sur le bouton de fermeture pour fermer le modal
-closeButton.addEventListener('click', function() {
-    modal.style.display = "none"; // Fermer le modal lors du clic sur le bouton de fermeture
-});
+/*closeButton.addEventListener('click', function() {
+    add_product_modal.style.display = "none"; // Fermer le modal lors du clic sur le bouton de fermeture
+});*/
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+/*window.onclick = function(event) {
+    if (event.target == add_product_modal) {
+        add_product_modal.style.display = "none";
     }
-}
+}*/
 
 // Function to check if form is valid
 function checkFormValidity() {
@@ -110,7 +131,7 @@ function sortByDateAscending(products) {
 
 
 // Handle form submission
-form.onsubmit = function(event) {
+/*add_product_form.onsubmit = function(event) {
     event.preventDefault();
     let aliment = document.getElementById("aliment").value;
     let type = document.getElementById("type").value;
@@ -138,53 +159,22 @@ form.onsubmit = function(event) {
     update_sidebar(product);
 
     // Clear form
-    form.reset();
+    add_product_form.reset();
     checkFormValidity();
 
     // Close modal
-    modal.style.display = "none";
-}
+    add_product_modal.style.display = "none";
+}*/
 
-// Fonction pour supprimer tous les produits
-function deleteAllProducts() {
-    // Vider les listes des boîtes centrales
-    const boxContents = document.querySelectorAll('.box-content');
-    boxContents.forEach(content => {
-        content.innerHTML = '';
-    });
 
-    // Empty the sidebar containing the list of products
-    empty_sidebar();
 
-    // Empty all cookies information
-    reset_all_cookies();
-}
+// Retrieve the button that permits to delete all products at the same time
+const delete_all_products_button = document.getElementById('delete_all_products_button');
 
-// Sélectionner le bouton "Tout supprimer"
-const deleteButton = document.getElementById('deleteButton');
-
-// Écouter l'événement de clic sur le bouton "Tout supprimer"
-deleteButton.addEventListener('click', function() {
-    // Appeler la fonction pour supprimer tous les produits
+// Add an event listener on the delete all products button to call the delete all products function
+delete_all_products_button.addEventListener('click', function() {
+    // Delete all registered products at the same time
     deleteAllProducts();
 });
-
-// Load products on page load
-window.onload = function() {
-    loadProducts();
-}
-
-// Load saved products from cookies
-function loadProducts() {
-    let products = get_cookie("products");
-    if (products) {
-        products = JSON.parse(products);
-        // Ajouter chaque produit à la sidebar et aux boîtes correspondantes
-        products.forEach(product => {
-            addProductBox(product);
-            update_sidebar(product);
-        });
-    }
-}
 
 

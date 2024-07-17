@@ -22,11 +22,11 @@
         </div>
         <div class="main">
             <div class="button-container">
-                <button class="add-button" id="addButton">
+                <button class="add-button" id="add_product_button">
                     <i class="fas fa-plus"></i>
                     Ajouter
                 </button>
-                <button class="delete-button" id="deleteButton">
+                <button class="delete-button" id="delete_all_products_button">
                     <i class="fas fa-trash-alt"></i>
                     Tout supprimer
                 </button>
@@ -52,12 +52,12 @@
         </div>
     </div>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
+    <!-- Add product modal dialog -->
+    <div id="add_product_modal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span id="close_add_product_modal">&times;</span>
             <h2>Ajouter un produit</h2>
-            <form id="productForm">
+            <form id="add_product_form">
                 <div class="form-group">
                     <label for="aliment">Aliment</label>
                     <input type="text" id="aliment" name="aliment" required>
@@ -97,7 +97,11 @@
 
     <script src="utils.js" type="module"></script>
     <script src="cookies.js" type="module"></script>
+    <script src="add_product.js" type="module"></script>
     <script src="sidebar.js" type="module"></script>
+    
+    <script src="products.js" type="module"></script>
+
     <script src="script.js" type="module"></script>
 </body>
 </html>
