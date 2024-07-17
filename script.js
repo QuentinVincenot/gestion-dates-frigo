@@ -1,5 +1,5 @@
 import { create_icon_based_on_dates } from './utils.js';
-import { getCookie, setCookie } from './cookies.js';
+import { get_cookie, set_cookie, reset_all_cookies } from './cookies.js';
 
 
 // Get the modal
@@ -57,31 +57,8 @@ document.getElementById("date").addEventListener("input", checkFormValidity);
 
 // Function to add product box to the DOM
 function addProductBox(product) {
-
+    // Create a font-awesome icon based on dates difference between today and product date
     let icon = create_icon_based_on_dates(product);
-
-    /*// Création de l'icône Font Awesome en fonction de la date
-    const icon = document.createElement('i');
-    icon.classList.add('fas');
-
-    // Calcul de la différence en jours entre aujourd'hui et la date du produit
-    const today = new Date();
-    const productDate = new Date(product.date);
-    const differenceInDays = Math.floor((productDate - today) / (1000 * 60 * 60 * 24));
-
-    if (differenceInDays < 0) {
-        // Date dépassée
-        icon.classList.add('fa-times-circle');
-        icon.style.color = 'red';
-    } else if (differenceInDays <= 7) {
-        // Date dans moins de 7 jours
-        icon.classList.add('fa-exclamation-triangle');
-        icon.style.color = 'orange';
-    } else {
-        // Date plus loin dans le futur
-        icon.classList.add('fa-check-circle');
-        icon.style.color = 'green';
-    }*/
 
     // Ajouter la boîte au bon conteneur en fonction du type de produit
     let product_type_box;
@@ -134,28 +111,8 @@ function sortByDateAscending(products) {
 
 // Fonction pour mettre à jour la sidebar avec la liste des aliments
 function updateSidebar(product) {
-    // Création de l'icône Font Awesome en fonction de la date
-    const icon = document.createElement('i');
-    icon.classList.add('fas');
-
-    // Calcul de la différence en jours entre aujourd'hui et la date du produit
-    const today = new Date();
-    const productDate = new Date(product.date);
-    const differenceInDays = Math.floor((productDate - today) / (1000 * 60 * 60 * 24));
-
-    if (differenceInDays < 0) {
-        // Date dépassée
-        icon.classList.add('fa-times-circle');
-        icon.style.color = 'red';
-    } else if (differenceInDays <= 7) {
-        // Date dans moins de 7 jours
-        icon.classList.add('fa-exclamation-triangle');
-        icon.style.color = 'orange';
-    } else {
-        // Date plus loin dans le futur
-        icon.classList.add('fa-check-circle');
-        icon.style.color = 'green';
-    }
+    // Create a font-awesome icon based on dates difference between today and product date
+    let icon = create_icon_based_on_dates(product);
     
     // Récupérer la liste des aliments
     let alimentsList = document.getElementById("alimentsList");
@@ -188,7 +145,7 @@ form.onsubmit = function(event) {
     let product = { aliment, type, date };
 
     // Get current products from cookies
-    let products = getCookie("products");
+    let products = get_cookie("products");
     if (products) {
         products = JSON.parse(products);
     } else {
@@ -199,7 +156,7 @@ form.onsubmit = function(event) {
     products.push(product);
 
     // Save updated products to cookies
-    setCookie("products", JSON.stringify(products), 30);
+    set_cookie("products", JSON.stringify(products), 30);
 
     // Add product to the DOM
     addProductBox(product);
@@ -224,8 +181,8 @@ function deleteAllProducts() {
     const alimentsList = document.getElementById('alimentsList');
     alimentsList.innerHTML = '';
 
-    // Vider les cookies
-    document.cookie = "products=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Empty all cookies information
+    reset_all_cookies();
 }
 
 // Sélectionner le bouton "Tout supprimer"
@@ -244,7 +201,7 @@ window.onload = function() {
 
 // Load saved products from cookies
 function loadProducts() {
-    let products = getCookie("products");
+    let products = get_cookie("products");
     if (products) {
         products = JSON.parse(products);
         // Ajouter chaque produit à la sidebar et aux boîtes correspondantes
