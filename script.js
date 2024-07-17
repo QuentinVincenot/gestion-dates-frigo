@@ -1,5 +1,6 @@
 import { create_icon_based_on_dates } from './utils.js';
 import { get_cookie, set_cookie, reset_all_cookies } from './cookies.js';
+import { update_sidebar } from './sidebar.js';
 
 
 // Get the modal
@@ -99,9 +100,6 @@ function addProductBox(product) {
     if (!inserted) {
         product_type_box.appendChild(box);
     }
-
-    // Mettre à jour la sidebar avec la nouvelle liste d'aliments
-    updateSidebar(product);
 }
 
 // Fonction pour trier les produits par date la plus ancienne
@@ -109,31 +107,7 @@ function sortByDateAscending(products) {
     return products.sort((a, b) => new Date(a.date) - new Date(b.date));
 }
 
-// Fonction pour mettre à jour la sidebar avec la liste des aliments
-function updateSidebar(product) {
-    // Create a font-awesome icon based on dates difference between today and product date
-    let icon = create_icon_based_on_dates(product);
-    
-    // Récupérer la liste des aliments
-    let alimentsList = document.getElementById("alimentsList");
 
-    // Ajouter le nouveau produit à la liste
-    let listItem = document.createElement("li");
-    listItem.textContent = ` ${product.aliment} - ${product.type} - ${product.date}`;
-    listItem.insertBefore(icon, listItem.firstChild);
-    alimentsList.appendChild(listItem);
-
-    // Trier les aliments par date la plus ancienne
-    let items = Array.from(alimentsList.getElementsByTagName("li"));
-    items.sort((a, b) => {
-        let dateA = new Date(a.textContent.split(" - ")[2]);
-        let dateB = new Date(b.textContent.split(" - ")[2]);
-        return dateA - dateB;
-    });
-
-    // Réorganiser les éléments dans la liste
-    items.forEach(item => alimentsList.appendChild(item));
-}
 
 // Handle form submission
 form.onsubmit = function(event) {
@@ -158,8 +132,10 @@ form.onsubmit = function(event) {
     // Save updated products to cookies
     set_cookie("products", JSON.stringify(products), 30);
 
-    // Add product to the DOM
+    // Add the created product to the appropriate category box
     addProductBox(product);
+    // Update the products list on the left in the sidebar 
+    update_sidebar(product);
 
     // Clear form
     form.reset();
