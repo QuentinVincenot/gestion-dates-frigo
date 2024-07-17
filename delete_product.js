@@ -18,10 +18,11 @@ function initialize_deletion_form(event) {
     console.log('Parent 2', event.target.parentNode.parentNode);
     console.log('Parent 2 ID', event.target.parentNode.parentNode.id);
 
-    let box_product_line_html = event.target.innerHTML;
-    console.log('Content', box_product_line_html.split('</i> ')[1]);
+    let box_product_line = event.target.innerHTML.split('</i> ')[1];
+    let product_info = box_product_line.split(' - ');
+    console.log('Content', product_info[0], product_info[1]);
 
-    let product_to_delete_type = event.target.parentNode.parentNode.children;
+    let product_to_delete_type = event.target.parentNode.parentNode.children[0].innerText;
     console.log('Type', product_to_delete_type);
 }
 
