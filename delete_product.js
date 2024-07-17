@@ -17,6 +17,7 @@ const box_products_lines = document.querySelectorAll('.box-product-line');
 box_products_lines.forEach(box_product_line => {
     box_product_line.addEventListener('click', function(event) {
         console.log(event);
+        delete_product_modal.style.display = "block";
     });
 });
 
