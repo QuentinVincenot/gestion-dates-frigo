@@ -1,4 +1,5 @@
 import { create_icon_based_on_dates } from "./utils.js";
+import { initialize_deletion_form } from './delete_product.js';
 
 // Export the products categories boxes display and data management functions
 export { empty_all_boxes, display_products_in_boxes };
@@ -72,6 +73,7 @@ function display_products_in_boxes(products) {
         product_element.addEventListener('click', function(event) {
             console.log(event);
             delete_product_modal.style.display = "block";
+            initialize_deletion_form(event);
         });
     });
 
