@@ -10,8 +10,8 @@ function create_icon_based_on_dates(product) {
 
     // Compute the difference between today's date and product date
     const today = new Date();
-    const productDate = new Date(product.date);
-    const differenceInDays = Math.floor((productDate - today) / (1000 * 60 * 60 * 24));
+    const product_date = new Date(product.date);
+    const differenceInDays = Math.floor((product_date - today) / (1000 * 60 * 60 * 24));
 
     // Add the color and style to the icon based on the dates difference
     if(differenceInDays < 0) {

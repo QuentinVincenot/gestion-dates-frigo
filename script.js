@@ -89,8 +89,9 @@ function addProductBox(product) {
     let inserted = false;
     const items = product_type_box.getElementsByTagName('li');
     for (let i = 0; i < items.length; i++) {
-        const itemDate = new Date(items[i].textContent.split(' - ')[1]);
-        if (productDate < itemDate) {
+        const product_date = new Date(product.date);
+        const item_date = new Date(items[i].textContent.split(' - ')[1]);
+        if (product_date < item_date) {
             product_type_box.insertBefore(box, items[i]);
             inserted = true;
             break;
