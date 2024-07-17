@@ -1,4 +1,4 @@
-import { get_cookie } from "./cookies";
+import { get_cookie } from "./cookies.js";
 
 // Export the cookies management function to persist data
 export { update_sidebar };
