@@ -1,5 +1,5 @@
 import { get_cookie, set_cookie } from "./cookies.js";
-import { update_sidebar } from './sidebar.js';
+import { display_products_in_sidebar } from './sidebar.js';
 
 export { checkFormValidity };
 
@@ -59,7 +59,7 @@ add_product_form.onsubmit = function(event) {
     // Add the created product to the appropriate category box
     addProductBox(product);
     // Update the products list on the left in the sidebar 
-    update_sidebar(product);
+    display_products_in_sidebar(products);
 
     // Clear form
     add_product_form.reset();
