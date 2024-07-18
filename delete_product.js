@@ -59,6 +59,9 @@ delete_product_form.onsubmit = function(event) {
         products = [];
     }
     console.log('Products', products);
+    console.log(products[0]);
+    console.log(products[0].aliment, products[0].type, products[0].date);
+    console.log(typeof(products[0].aliment), typeof(products[0].type), typeof(products[0].date));
 
     // Find the product to delete and delete it from the list of registered products
     let product_name = document.getElementById('aliment_to_delete').value;
@@ -68,7 +71,9 @@ delete_product_form.onsubmit = function(event) {
 
     let product_date_cast = new Date(product_date);
     let deleted_product = { 'aliment': product_name, 'type': product_type, 'date': product_date_cast };
-    console.log(deleted_product);
+    console.log('Deleted product?', deleted_product);
+    console.log(deleted_product.aliment, deleted_product.type, deleted_product.date);
+    console.log(typeof(deleted_product.aliment), typeof(deleted_product.type), typeof(deleted_product.date));
 
     let index_of_deleted_product = products.indexOf(deleted_product);
     if(index_of_deleted_product != -1) {
