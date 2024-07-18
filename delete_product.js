@@ -77,13 +77,21 @@ delete_product_form.onsubmit = function(event) {
     });
     console.log('Found object', found_object);
     products = products.filter((p) => {
-        return (p.aliment != deleted_product.aliment) && (p.type != deleted_product.type) && (p.date != deleted_product.date);
+        return (p.aliment != deleted_product.aliment) || (p.type != deleted_product.type) || (p.date != deleted_product.date);
     });
     console.log('Products after deletion', products);
 
+    // Save updated products to cookies
+    set_cookie("products", JSON.stringify(products), 30);
+
+    // Update the products list on the left in the sidebar 
+    display_products_in_sidebar(products);
+
+    //  Update the products list in the categories boxes at the center
+    display_products_in_boxes(products);
 
 
-    let index_of_deleted_product = products.indexOf(deleted_product);
+    /*let index_of_deleted_product = products.indexOf(deleted_product);
     console.log('IndexOf', index_of_deleted_product);
 
 
@@ -98,7 +106,7 @@ delete_product_form.onsubmit = function(event) {
 
         //  Update the products list in the categories boxes at the center
         display_products_in_boxes(products);
-    }
+    }*/
 
     // Close the modal dialog at the end of the product deletion submission
     delete_product_modal.style.display = "none";
