@@ -65,7 +65,10 @@ delete_product_form.onsubmit = function(event) {
     let product_type = document.getElementById('type_aliment_to_delete').value;
     let product_date = document.getElementById('date_aliment_to_delete').value;
     console.log('Delete?', product_name, product_type, product_date);
-    let deleted_product = { 'aliment': product_name, 'type': product_type, 'date': product_date };
+
+    let product_date_cast = new Date(product_date);
+    let deleted_product = { 'aliment': product_name, 'type': product_type, 'date': product_date_cast };
+    console.log(deleted_product);
 
     let index_of_deleted_product = products.indexOf(deleted_product);
     if(index_of_deleted_product != -1) {
