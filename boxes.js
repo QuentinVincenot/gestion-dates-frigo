@@ -76,16 +76,6 @@ function display_products_in_boxes(products) {
             delete_product_modal.style.display = "block";
         });
     });
-
-    /*// Sort products by their date (oldest dates in first)
-    let items = Array.from(productsList.getElementsByTagName("li"));
-    items.sort((a, b) => {
-        let dateA = new Date(a.textContent.split(" - ")[2]);
-        let dateB = new Date(b.textContent.split(" - ")[2]);
-        return dateA - dateB;
-    });
-    // Reorganize products in the list
-    items.forEach(item => productsList.appendChild(item));*/
 }
 
 

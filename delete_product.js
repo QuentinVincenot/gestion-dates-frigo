@@ -17,18 +17,12 @@ window.onclick = function(event) {
 
 
 function initialize_deletion_form(event) {
-    console.log('Target', event.target);
-    console.log('Parent', event.target.parentNode);
-    console.log('Parent 2', event.target.parentNode.parentNode);
-    console.log('Parent 2 ID', event.target.parentNode.parentNode.id);
-
+    // Retrieve information from the selected product to initialize the deletion modal dialog form
     let box_product_line = event.target.innerHTML.split('</i> ')[1];
     let product_info = box_product_line.split(' - ');
-    console.log('Content', product_info[0], product_info[1]);
-
     let product_to_delete_type = event.target.parentNode.parentNode.children[0].innerText;
-    console.log('Type', product_to_delete_type);
 
+    // Initialize information in the deletion form of the modal dialog
     document.getElementById('aliment_to_delete').value = product_info[0];
     document.getElementById('type_aliment_to_delete').value = product_to_delete_type;
     document.getElementById('date_aliment_to_delete').value = product_info[1];
@@ -44,8 +38,6 @@ close_button.addEventListener('click', function() {
 });
 
 
-
-
 // Retrieve the submission form of the product addition dialog
 var delete_product_form = document.getElementById("delete_product_form");
 
@@ -53,6 +45,7 @@ var delete_product_form = document.getElementById("delete_product_form");
 delete_product_form.onsubmit = function(event) {
     event.preventDefault();
 
+    // Retrieve information about the product to delete from the deletion modal dialog
     let product_name = document.getElementById('aliment_to_delete').value;
     let product_type = document.getElementById('type_aliment_to_delete').value;
     let product_date = document.getElementById('date_aliment_to_delete').value;
@@ -67,19 +60,10 @@ delete_product_form.onsubmit = function(event) {
         products = [];
     }
 
-
-
-    // Find the product to delete and delete it from the list of registered products
-    console.log('Products before deletion', products);
-    console.log('Find');
-    let found_object = products.find((p) => {
-        return (p.aliment === deleted_product.aliment) && (p.type === deleted_product.type) && (p.date === deleted_product.date);
-    });
-    console.log('Found object', found_object);
+    // Keep every other product different from the one to delete, to filter the registered products
     products = products.filter((p) => {
         return (p.aliment != deleted_product.aliment) || (p.type != deleted_product.type) || (p.date != deleted_product.date);
     });
-    console.log('Products after deletion', products);
 
     // Save updated products to cookies
     set_cookie("products", JSON.stringify(products), 30);
@@ -89,24 +73,6 @@ delete_product_form.onsubmit = function(event) {
 
     //  Update the products list in the categories boxes at the center
     display_products_in_boxes(products);
-
-
-    /*let index_of_deleted_product = products.indexOf(deleted_product);
-    console.log('IndexOf', index_of_deleted_product);
-
-
-    if(index_of_deleted_product != -1) {
-        delete products[index_of_deleted_product];
-
-        // Save updated products to cookies
-        set_cookie("products", JSON.stringify(products), 30);
-
-        // Update the products list on the left in the sidebar 
-        display_products_in_sidebar(products);
-
-        //  Update the products list in the categories boxes at the center
-        display_products_in_boxes(products);
-    }*/
 
     // Close the modal dialog at the end of the product deletion submission
     delete_product_modal.style.display = "none";
