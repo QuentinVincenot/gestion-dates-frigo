@@ -37,10 +37,10 @@ var add_product_form = document.getElementById("add_product_form");
 // Add an event listener on the submission event of the add product form in the dialog
 add_product_form.onsubmit = function(event) {
     event.preventDefault();
+
     let aliment = document.getElementById("aliment").value;
     let type = document.getElementById("type").value;
     let date = document.getElementById("date").value;
-
     let product = { aliment, type, date };
 
     // Get current products from cookies

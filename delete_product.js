@@ -51,6 +51,14 @@ var delete_product_form = document.getElementById("delete_product_form");
 
 // Add an event listener on the submission event of the add product form in the dialog
 delete_product_form.onsubmit = function(event) {
+    event.preventDefault();
+
+    let product_name = document.getElementById('aliment_to_delete').value;
+    let product_type = document.getElementById('type_aliment_to_delete').value;
+    let product_date = document.getElementById('date_aliment_to_delete').value;
+    let product_date_cast = new Date(product_date).toISOString().split('T')[0];
+    let deleted_product = { 'aliment': product_name, 'type': product_type, 'date': product_date_cast };
+
     // Get current products from cookies
     let products = get_cookie("products");
     if (products) {
@@ -58,24 +66,18 @@ delete_product_form.onsubmit = function(event) {
     } else {
         products = [];
     }
-    console.log('Products', products);
-    console.log(products[0]);
-    console.log(products[0].aliment, products[0].type, products[0].date);
-    console.log(typeof(products[0].aliment), typeof(products[0].type), typeof(products[0].date));
 
+    
     // Find the product to delete and delete it from the list of registered products
-    let product_name = document.getElementById('aliment_to_delete').value;
-    let product_type = document.getElementById('type_aliment_to_delete').value;
-    let product_date = document.getElementById('date_aliment_to_delete').value;
-    console.log('Delete?', product_name, product_type, product_date);
-
-    let product_date_cast = new Date(product_date).toISOString().split('T')[0];
-    let deleted_product = { 'aliment': product_name, 'type': product_type, 'date': product_date_cast };
-    console.log('Deleted product?', deleted_product);
-    console.log(deleted_product.aliment, deleted_product.type, deleted_product.date);
-    console.log(typeof(deleted_product.aliment), typeof(deleted_product.type), typeof(deleted_product.date));
+    console.log('Find');
+    console.log(products.find((p) => {
+        return (p.aliment === deleted_product.aliment) && (p.type === deleted_product.type) && (p.date === deleted_product.date);
+    }));
 
     let index_of_deleted_product = products.indexOf(deleted_product);
+    console.log('IndexOf', index_of_deleted_product);
+
+
     if(index_of_deleted_product != -1) {
         delete products[index_of_deleted_product];
 
