@@ -67,12 +67,19 @@ delete_product_form.onsubmit = function(event) {
         products = [];
     }
 
-    
+
+
     // Find the product to delete and delete it from the list of registered products
+    console.log('Products before deletion', products);
     console.log('Find');
-    console.log(products.find((p) => {
+    let found_object = products.find((p) => {
         return (p.aliment === deleted_product.aliment) && (p.type === deleted_product.type) && (p.date === deleted_product.date);
-    }));
+    });
+    console.log('Found object', found_object);
+    products.filter(found_object);
+    console.log('Products after deletion', products);
+
+
 
     let index_of_deleted_product = products.indexOf(deleted_product);
     console.log('IndexOf', index_of_deleted_product);
