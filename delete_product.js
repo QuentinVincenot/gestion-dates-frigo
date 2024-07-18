@@ -76,7 +76,9 @@ delete_product_form.onsubmit = function(event) {
         return (p.aliment === deleted_product.aliment) && (p.type === deleted_product.type) && (p.date === deleted_product.date);
     });
     console.log('Found object', found_object);
-    products.filter(found_object);
+    products = products.filter((p) => {
+        return (p.aliment != deleted_product.aliment) && (p.type != deleted_product.type) && (p.date != deleted_product.date);
+    });
     console.log('Products after deletion', products);
 
 
