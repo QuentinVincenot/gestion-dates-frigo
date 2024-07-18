@@ -6,7 +6,9 @@ header {
     background-color: #4CAF50;
     color: white;
     text-align: center;
-    padding: 1em 0;
+    margin-top: -21px;
+    height: 66px;
+    line-height: 66px;
 }
 .container {
     display: flex;
@@ -20,7 +22,6 @@ ul {
 .sidebar {
     width: 400px; /* Augmentation de la largeur de la sidebar à 600 pixels */
     background-color: #f4f4f4;
-    padding: 1em;
     box-sizing: border-box;
     text-align: right;
 }
@@ -76,9 +77,8 @@ ul {
 }
 .boxes {
     display: flex;
-    justify-content: space-between; /* Espacement égal entre les boîtes */
+    justify-content: space-around;
     flex-wrap: wrap;
-    gap: 1em; /* Espacement entre les boîtes */
 }
 .box {
     width: calc(25% - 1em); /* Largeur calculée pour chaque boîte avec espacement */
@@ -90,6 +90,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Aligner le contenu en haut */
+    border-radius: 15px;
 }
 .box-title {
     font-weight: bold;
