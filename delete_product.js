@@ -1,4 +1,4 @@
-import { get_cookie } from "./cookies.js";
+import { get_cookie, set_cookie } from "./cookies.js";
 import { display_products_in_sidebar } from "./sidebar.js";
 import { display_products_in_boxes } from "./boxes.js";
 
@@ -65,12 +65,21 @@ delete_product_form.onsubmit = function(event) {
     let product_type = document.getElementById('type_aliment_to_delete').value;
     let product_date = document.getElementById('date_aliment_to_delete').value;
     console.log('Delete?', product_name, product_type, product_date);
+    let deleted_product = { 'aliment': product_name, 'type': product_type, 'date': product_date };
 
-    // Update the products list on the left in the sidebar 
-    display_products_in_sidebar(products);
+    let index_of_deleted_product = products.indexOf(deleted_product);
+    if(index_of_deleted_product != -1) {
+        delete products[index_of_deleted_product];
 
-    //  Update the products list in the categories boxes at the center
-    display_products_in_boxes(products);
+        // Save updated products to cookies
+        set_cookie("products", JSON.stringify(products), 30);
+
+        // Update the products list on the left in the sidebar 
+        display_products_in_sidebar(products);
+
+        //  Update the products list in the categories boxes at the center
+        display_products_in_boxes(products);
+    }
 
     // Close the modal dialog at the end of the product deletion submission
     delete_product_modal.style.display = "none";
