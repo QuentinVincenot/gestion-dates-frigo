@@ -6,7 +6,7 @@ var delete_product_modal = document.getElementById("delete_product_modal");
 
 // Add an event listener to close the modal dialog when the user clicks anywhere on the outside
 window.onclick = function(event) {
-    if(event.target != delete_product_modal.children[0]) {
+    if(event.target == delete_product_modal.children[0]) {
         delete_product_modal.style.display = "none";
     }
 }
@@ -38,5 +38,32 @@ var close_button = document.getElementById('close_delete_product_modal');
 close_button.addEventListener('click', function() {
     delete_product_modal.style.display = "none";
 });
+
+
+
+
+// Retrieve the submission form of the product addition dialog
+var delete_product_form = document.getElementById("delete_product_form");
+
+// Add an event listener on the submission event of the add product form in the dialog
+delete_product_form.onsubmit = function(event) {
+    // Get current products from cookies
+    let products = get_cookie("products");
+    if (products) {
+        products = JSON.parse(products);
+    } else {
+        products = [];
+    }
+    console.log('Products', products);
+
+    // Find the product to delete and delete it from the list of registered products
+    let product_name = document.getElementById('aliment_to_delete').value;
+    let product_type = document.getElementById('type_aliment_to_delete').value;
+    let product_date = document.getElementById('date_aliment_to_delete').value;
+    console.log('Delete?', product_name, product_type, product_date);
+
+    // Close the modal dialog at the end of the product deletion submission
+    delete_product_modal.style.display = "none";
+}
 
 
