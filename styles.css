@@ -167,6 +167,17 @@ ul {
     background-color: #ccc;
     cursor: not-allowed;
 }
+.confirm-button, .cancel-button {
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.confirm-button {
+    background-color: #f44336;
+}
 .button-center {
     text-align: center;
 }
