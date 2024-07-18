@@ -10,6 +10,10 @@ var viandeRougeBox = document.getElementById("viandeRouge");
 var viandeBlancheBox = document.getElementById("viandeBlanche");
 var poissonBox = document.getElementById("poisson");
 var boissonBox = document.getElementById("boisson");
+var fromageBox = document.getElementById("fromage");
+var laitageBox = document.getElementById("laitage");
+var biscuitsBox = document.getElementById("biscuits");
+var aperitifBox = document.getElementById("aperitif");
 
 // Function to completely empty and clean the different categories boxes containing all products
 function empty_all_boxes() {
@@ -42,6 +46,18 @@ function display_products_in_boxes(products) {
                 break;
             case "Boisson":
                 product_type_box = boissonBox.getElementsByTagName('ul')[0];
+                break;
+            case "Fromage":
+                product_type_box = fromageBox.getElementsByTagName('ul')[0];
+                break;
+            case "Laitage":
+                product_type_box = laitageBox.getElementsByTagName('ul')[0];
+                break;
+            case "Biscuits":
+                product_type_box = biscuitsBox.getElementsByTagName('ul')[0];
+                break;
+            case "Apéritif":
+                product_type_box = aperitifBox.getElementsByTagName('ul')[0];
                 break;
             default:
                 console.error(`Type d'aliment non reconnu: ${type}`);
